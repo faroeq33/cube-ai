@@ -17,23 +17,25 @@ export default async function (req, res) {
   }
 
   const user = req.body.user || "";
-  if (user.trim().length === 0) {
-    res.status(400).json({
-      error: {
-        message: "Please enter a valid user",
-      },
-    });
-    return;
-  }
+  // if (user.trim().length === 0) {
+  //   res.status(400).json({
+  //     error: {
+  //       message: "Please enter a valid user",
+  //     },
+  //   });
+  //   return;
+  // }
 
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(),
-      temperature: 0.6,
+      prompt: generatePrompt(), // Enter user variable in order to provide input
+      temperature: 0,
       max_tokens: 1000,
     });
-    console.log({ result: completion.data.choices });
+
+    // console.log({ result: completion.data.choices });
+
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
     // Consider adjusting the error handling logic for your use case

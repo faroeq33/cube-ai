@@ -3,11 +3,13 @@ import { useState } from "react";
 import styles from "./index.module.css";
 
 export default function Home() {
+  const [loading, setLoading] = useState();
   const [userInput, setUserInput] = useState("");
   const [result, setResult] = useState();
 
   async function onSubmit(event) {
     event.preventDefault();
+    setLoading(true);
     try {
       const response = await fetch("/api/generate", {
         method: "POST",
@@ -32,6 +34,7 @@ export default function Home() {
       console.error(error);
       alert(error.message);
     }
+    setLoading(false);
   }
 
   return (
@@ -59,18 +62,21 @@ export default function Home() {
         </svg>
 
         {/* <img src="/dog.png" className={styles.icon} /> */}
-        <h3>Cube Scramble</h3>
+        <h3>Cube AI Scramble</h3>
         <form onSubmit={onSubmit}>
-          <input
+          {/* <input
             type="text"
             name="user"
-            placeholder="Enter an user"
+            placeholder="Enter something"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
-          />
-          <input type="submit" value="Generate names" />
+          /> */}
+          <input type="submit" value="Generate scramble" />
         </form>
-        <div className={styles.result}>{result}</div>
+        <div className={styles.result}>
+          {result}
+          <div>{loading && <div>Loading</div>}</div>
+        </div>
       </main>
     </div>
   );
