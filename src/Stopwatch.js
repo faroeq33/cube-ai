@@ -31,10 +31,10 @@ const Stopwatch = () => {
     return "Start";
   };
 
-  const changeIfActive = `${running ? "text-blue-300" : "text-black"}`;
+  const changeIfActive = `${running ? "text-green-700" : "text-black"}`;
 
   return (
-    <div className="w-full pt-8 mt-8 text-center text-black bg-green-100 shadow-md stopwatch">
+    <div className="w-full pt-8 font-mono text-center text-black bg-green-200 rounded-b-xl stopwatch">
       <div className={`numbers capitalize ${changeIfActive}`}>
         {/* <span>{("0" + Math.floor((time / 60000) % 60)).slice(-2)}:</span> */}
         <span className={` ${numbersStyle}`}>
@@ -44,7 +44,7 @@ const Stopwatch = () => {
           {("0" + ((time / 10) % 100)).slice(-2)}
         </span>
       </div>
-      <div className="p-4 buttons">
+      <div className="p-4 ">
         <button
           className={` capitalize m-4  ${running} : 'text-blue-300' `}
           type="text"

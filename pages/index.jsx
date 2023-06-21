@@ -40,12 +40,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
+        <title>Cube AI</title>
         <link rel="icon" href="/dog.png" />
         <script src="https://cdn.tailwindcss.com"></script>
       </Head>
 
-      <div className=" fullbody">
+      <div className="flex flex-col items-center pt-16 ">
         <main className={styles.main}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -53,8 +53,7 @@ export default function Home() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className=""
-            style={{ height: 100 }}
+            className="w-24 h-24"
           >
             <path
               strokeLinecap="round"
@@ -62,9 +61,9 @@ export default function Home() {
               d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
             />
           </svg>
-          {/* <img src="/dog.png" className={styles.icon} /> */}
+
           <h3>Cube AI Scramble</h3>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit} className="flex flex-col">
             {/* <input
               type="text"
               name="user"
@@ -74,7 +73,7 @@ export default function Home() {
             /> */}
             <button
               type="submit"
-              className="px-3 py-4 mb-8 text-lg text-white bg-green-500 border-green-600 rounded-sm"
+              className="px-3 py-4 mb-8 text-lg text-center text-white transition ease-in-out bg-green-500 border-green-600 rounded cursor-pointer hover:bg-green-600"
             >
               {loading && (
                 <svg
@@ -101,10 +100,12 @@ export default function Home() {
               Generate scramble
             </button>
           </form>
-          <div className={styles.result}>{result}</div>
-          <Stopwatch></Stopwatch>
         </main>
       </div>
+      <div className="py-8 font-bold text-center text-white transition-all ease-in-out bg-green-600 border-t-4 border-green-700 shadow-inner">
+        {result}
+      </div>
+      <Stopwatch></Stopwatch>
     </div>
   );
 }
